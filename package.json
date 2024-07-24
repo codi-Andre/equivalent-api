@@ -5,15 +5,22 @@
     "dev": "bun run --watch src/http/server.ts",
     "build": "bun build src/http/server.ts",
     "start": "NODE_ENV=production bun src/http/server.ts",
-    "test": "bun test"
+    "test": "bun test",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:drop": "drizzle-kit drop",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "drizzle-orm": "^0.32.1",
     "elysia": "latest"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.17.0",
     "@typescript-eslint/parser": "^7.17.0",
+    "better-sqlite3": "^11.1.2",
     "bun-types": "latest",
+    "drizzle-kit": "^0.23.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.3.3",

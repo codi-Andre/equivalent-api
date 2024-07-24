@@ -1,0 +1,745 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "6",
+  "dialect": "sqlite",
+  "tables": {
+    "categories": {
+      "name": "categories",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "categories_name_key": {
+          "name": "categories_name_key",
+          "columns": [
+            "name"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "foods": {
+      "name": "foods",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "categoryId": {
+          "autoincrement": false,
+          "name": "categoryId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "foods_name_key": {
+          "name": "foods_name_key",
+          "columns": [
+            "name"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "foods_categoryId_categories_id_fk": {
+          "name": "foods_categoryId_categories_id_fk",
+          "tableFrom": "foods",
+          "tableTo": "categories",
+          "columnsFrom": [
+            "categoryId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "amino_acids": {
+      "name": "amino_acids",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "foodId": {
+          "autoincrement": false,
+          "name": "foodId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tryptophan": {
+          "autoincrement": false,
+          "name": "tryptophan",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "threonine": {
+          "autoincrement": false,
+          "name": "threonine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "isoleucine": {
+          "autoincrement": false,
+          "name": "isoleucine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "leucine": {
+          "autoincrement": false,
+          "name": "leucine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lysine": {
+          "autoincrement": false,
+          "name": "lysine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "methionine": {
+          "autoincrement": false,
+          "name": "methionine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cystine": {
+          "autoincrement": false,
+          "name": "cystine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "phenylalanine": {
+          "autoincrement": false,
+          "name": "phenylalanine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tyrosine": {
+          "autoincrement": false,
+          "name": "tyrosine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "valine": {
+          "autoincrement": false,
+          "name": "valine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "arginine": {
+          "autoincrement": false,
+          "name": "arginine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "histidine": {
+          "autoincrement": false,
+          "name": "histidine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "alanine": {
+          "autoincrement": false,
+          "name": "alanine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "asparticAcid": {
+          "autoincrement": false,
+          "name": "asparticAcid",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "glutamicAcid": {
+          "autoincrement": false,
+          "name": "glutamicAcid",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "glycine": {
+          "autoincrement": false,
+          "name": "glycine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "proline": {
+          "autoincrement": false,
+          "name": "proline",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "serine": {
+          "autoincrement": false,
+          "name": "serine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "amino_acids_foodId_key": {
+          "name": "amino_acids_foodId_key",
+          "columns": [
+            "foodId"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "amino_acids_foodId_foods_id_fk": {
+          "name": "amino_acids_foodId_foods_id_fk",
+          "tableFrom": "amino_acids",
+          "tableTo": "foods",
+          "columnsFrom": [
+            "foodId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "fatty_acids": {
+      "name": "fatty_acids",
+      "columns": {
+        "foodId": {
+          "autoincrement": false,
+          "name": "foodId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "saturated": {
+          "autoincrement": false,
+          "name": "saturated",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "monounsaturated": {
+          "autoincrement": false,
+          "name": "monounsaturated",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "polyunsaturated": {
+          "autoincrement": false,
+          "name": "polyunsaturated",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "12:0": {
+          "autoincrement": false,
+          "name": "12:0",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "14:0": {
+          "autoincrement": false,
+          "name": "14:0",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "14:1": {
+          "autoincrement": false,
+          "name": "14:1",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "16:0": {
+          "autoincrement": false,
+          "name": "16:0",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "16:1": {
+          "autoincrement": false,
+          "name": "16:1",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "18:0": {
+          "autoincrement": false,
+          "name": "18:0",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "18:1": {
+          "autoincrement": false,
+          "name": "18:1",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "18:1t": {
+          "autoincrement": false,
+          "name": "18:1t",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "18:2n6": {
+          "autoincrement": false,
+          "name": "18:2n6",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "18:2t": {
+          "autoincrement": false,
+          "name": "18:2t",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "18:3n3": {
+          "autoincrement": false,
+          "name": "18:3n3",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "20:0": {
+          "autoincrement": false,
+          "name": "20:0",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "20:1": {
+          "autoincrement": false,
+          "name": "20:1",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "20:4": {
+          "autoincrement": false,
+          "name": "20:4",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "20:5": {
+          "autoincrement": false,
+          "name": "20:5",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "22:0": {
+          "autoincrement": false,
+          "name": "22:0",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "22:5": {
+          "autoincrement": false,
+          "name": "22:5",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "22:6": {
+          "autoincrement": false,
+          "name": "22:6",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "24:0": {
+          "autoincrement": false,
+          "name": "24:0",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "fatty_acids_foodId_key": {
+          "name": "fatty_acids_foodId_key",
+          "columns": [
+            "foodId"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "fatty_acids_foodId_foods_id_fk": {
+          "name": "fatty_acids_foodId_foods_id_fk",
+          "tableFrom": "fatty_acids",
+          "tableTo": "foods",
+          "columnsFrom": [
+            "foodId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "nutrients": {
+      "name": "nutrients",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "foodId": {
+          "autoincrement": false,
+          "name": "foodId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "moisture": {
+          "autoincrement": false,
+          "name": "moisture",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kcal": {
+          "autoincrement": false,
+          "name": "kcal",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kJ": {
+          "autoincrement": false,
+          "name": "kJ",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "protein": {
+          "autoincrement": false,
+          "name": "protein",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lipids": {
+          "autoincrement": false,
+          "name": "lipids",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cholesterol": {
+          "autoincrement": false,
+          "name": "cholesterol",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "carbohydrates": {
+          "autoincrement": false,
+          "name": "carbohydrates",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dietaryFiber": {
+          "autoincrement": false,
+          "name": "dietaryFiber",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ash": {
+          "autoincrement": false,
+          "name": "ash",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "calcium": {
+          "autoincrement": false,
+          "name": "calcium",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "magnesium": {
+          "autoincrement": false,
+          "name": "magnesium",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "manganese": {
+          "autoincrement": false,
+          "name": "manganese",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phosphorus": {
+          "autoincrement": false,
+          "name": "phosphorus",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "iron": {
+          "autoincrement": false,
+          "name": "iron",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sodium": {
+          "autoincrement": false,
+          "name": "sodium",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "potassium": {
+          "autoincrement": false,
+          "name": "potassium",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "copper": {
+          "autoincrement": false,
+          "name": "copper",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "zinc": {
+          "autoincrement": false,
+          "name": "zinc",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "retinol": {
+          "autoincrement": false,
+          "name": "retinol",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "re": {
+          "autoincrement": false,
+          "name": "re",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rae": {
+          "autoincrement": false,
+          "name": "rae",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "thiamin": {
+          "autoincrement": false,
+          "name": "thiamin",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "riboflavin": {
+          "autoincrement": false,
+          "name": "riboflavin",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pyridoxine": {
+          "autoincrement": false,
+          "name": "pyridoxine",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "niacin": {
+          "autoincrement": false,
+          "name": "niacin",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vitaminC": {
+          "autoincrement": false,
+          "name": "vitaminC",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "nutrients_foodId_key": {
+          "name": "nutrients_foodId_key",
+          "columns": [
+            "foodId"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "nutrients_foodId_foods_id_fk": {
+          "name": "nutrients_foodId_foods_id_fk",
+          "tableFrom": "nutrients",
+          "tableTo": "foods",
+          "columnsFrom": [
+            "foodId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "units": {
+      "name": "units",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "fieldName": {
+          "autoincrement": false,
+          "name": "fieldName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "unit": {
+          "autoincrement": false,
+          "name": "unit",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "labelPt": {
+          "autoincrement": false,
+          "name": "labelPt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "infoodsTagname": {
+          "autoincrement": false,
+          "name": "infoodsTagname",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "systematicName": {
+          "autoincrement": false,
+          "name": "systematicName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "commonName": {
+          "autoincrement": false,
+          "name": "commonName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
