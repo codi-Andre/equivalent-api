@@ -4,6 +4,12 @@ import { Nutrients } from "./nutrients"
 export type Food = {
   id: number
   name: string
-  category?: Partial<Category> | string
-  nutrients?: Partial<Nutrients>
 }
+
+export type FoodWithCategory = Food & {
+  category: string
+}
+
+export type FoodWithDetails = Food &
+  Record<"category", Category> &
+  Record<"nutrients", Nutrients>

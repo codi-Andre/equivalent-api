@@ -1,6 +1,6 @@
-import { type Food } from "../models/food"
+import { type FoodWithCategory, type FoodWithDetails } from "../models/food"
 
 export interface FoodsRepository {
-  getFoods(): Promise<Food[]>
-  findFoodById(id: number): Promise<Food | undefined>
+  getFoods(): Promise<FoodWithCategory[]>
+  findFoodById(id: number): Promise<FoodWithDetails | undefined>
 }

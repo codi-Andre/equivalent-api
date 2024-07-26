@@ -1,15 +1,11 @@
-import { Category } from "../models/category"
-import { Food } from "../models/food"
+import { FoodWithDetails } from "../models/food"
 import { UseCase } from "../shared/use-case"
 import { FoodsRepository } from "./foods-repository"
 
-export class FindFoodById
-  implements
-    UseCase<number, (Omit<Food, "categoryId"> & Pick<Category, "name">) | null>
-{
+export class FindFoodById implements UseCase<number, FoodWithDetails | null> {
   constructor(private readonly repo: FoodsRepository) {}
 
-  async execute(id: number): Promise<Food | null> {
+  async execute(id: number): Promise<FoodWithDetails | null> {
     const food = await this.repo.findFoodById(id)
 
     if (!food) {
