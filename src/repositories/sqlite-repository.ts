@@ -1,5 +1,5 @@
 import { Category } from "@/core/models/category"
-import { FoodWithCategory, FoodWithDetails } from "@/core/models/food"
+import { Food, FoodWithCategory, FoodWithDetails } from "@/core/models/food"
 import { CategoriesRepository } from "@/core/services/categories-repository"
 import { FoodsRepository } from "@/core/services/foods-repository"
 import { eq } from "drizzle-orm"
@@ -8,6 +8,15 @@ import { categories, foods } from "drizzle/schema"
 
 class Repository implements CategoriesRepository, FoodsRepository {
   constructor(private readonly repo: SqliteDb) {}
+
+  async searchFoodByCategoryId(id: number): Promise<Food[]> {
+    const foodList = await this.repo
+      .select({ id: foods.id, name: foods.name })
+      .from(foods)
+      .where(eq(foods.categoryId, id))
+
+    return foodList
+  }
 
   async getFoods(): Promise<FoodWithCategory[]> {
     const foodList = await this.repo
