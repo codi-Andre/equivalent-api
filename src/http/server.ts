@@ -2,6 +2,8 @@ import { Elysia } from "elysia"
 import { cors } from "@elysiajs/cors"
 import { swagger } from "@elysiajs/swagger"
 import { getCategories } from "./routes/get-categories"
+import { getFoods } from "./routes/get-foods"
+import { getFoodDetails } from "./routes/get-food-details"
 
 const app = new Elysia()
   .use(
@@ -16,7 +18,7 @@ const app = new Elysia()
           title: "Equivalent documentation",
           version: "0.0.1",
         },
-        tags: [{ name: "Categories" }],
+        tags: [{ name: "Categories" }, { name: "Foods" }],
       },
     })
   )
@@ -32,7 +34,9 @@ const app = new Elysia()
         return "INTERNAL_SERVER_ERROR"
     }
   })
-  .group("/api/v1", (app) => app.use(getCategories))
+  .group("/api/v1", (app) =>
+    app.use(getCategories).use(getFoods).use(getFoodDetails)
+  )
   .listen(3000)
 
 console.log(
