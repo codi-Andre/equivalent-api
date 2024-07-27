@@ -1,11 +1,11 @@
 export type Nutrients = {
-  [key: string]: number | null
-  kcal: number | null
-  protein: number | null
-  lipids: number | null
-  carbohydrates: number | null
+  [key: string]: number
+  kcal: number
+  protein: number
+  lipids: number
+  carbohydrates: number
 }
 
-export type NutrientsWithQuantity = NonNullable<Nutrients> & {
+export type NutrientsWithQuantity = Nutrients & {
   quantity: number
 }

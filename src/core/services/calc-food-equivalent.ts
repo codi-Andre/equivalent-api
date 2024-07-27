@@ -38,30 +38,24 @@ export class CalculateFoodEquivalent
     food2: Nutrients
   ): NutrientsWithQuantity[] {
     for (const nutrient in food1) {
-      if (food1[nutrient] === null) {
-        food1[nutrient] = 0
-      }
       const perGram = food1[nutrient] / this.#defaultQuantity
       food1[nutrient] = parseFloat((perGram * quantity).toFixed(1))
     }
 
     for (const nutrient in food2) {
-      if (food2[nutrient] === null) {
-        food2[nutrient] = 0
-      }
       food2[nutrient] = food2[nutrient] / this.#defaultQuantity
     }
 
-    this.#food2Quantity = parseFloat((food1.kcal! / food2.kcal!).toFixed(1))
-    console.log(this.#food2Quantity)
+    this.#food2Quantity = parseFloat((food1.kcal / food2.kcal).toFixed(1))
+
     for (const nutrient in food2) {
       food2[nutrient] = parseFloat(
-        (food2[nutrient]! * this.#food2Quantity).toFixed(1)
+        (food2[nutrient] * this.#food2Quantity).toFixed(1)
       )
     }
-    return [
-      { ...food1, quantity },
-      { ...food2, quantity: this.#food2Quantity },
-    ]
+    food1.quantity = quantity
+    food2.quantity = this.#food2Quantity
+
+    return [food1, food2] as NutrientsWithQuantity[]
   }
 }
