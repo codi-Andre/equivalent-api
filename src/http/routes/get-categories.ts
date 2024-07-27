@@ -1,3 +1,4 @@
+import { Food } from "@/core/models/food"
 import { FetchCategories } from "@/core/services/fetch-categories"
 import { repository } from "@/repositories/sqlite-repository"
 import Elysia, { t } from "elysia"
@@ -11,12 +12,7 @@ export const getCategories = new Elysia().get(
     return categories
   },
   {
-    response: t.Array(
-      t.Object({
-        id: t.Number(),
-        name: t.String(),
-      })
-    ),
+    response: t.Array(Food),
     detail: {
       tags: ["Categories"],
     },

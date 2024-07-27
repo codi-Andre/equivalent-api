@@ -1,3 +1,4 @@
+import { FoodWithDetails } from "@/core/models/food"
 import { FindFoodById } from "@/core/services/find-food-by-id"
 import { repository } from "@/repositories/sqlite-repository"
 import Elysia, { NotFoundError, t } from "elysia"
@@ -20,20 +21,7 @@ export const getFoodDetails = new Elysia().get(
         error: "Id must be a number",
       }),
     }),
-    response: t.Object({
-      id: t.Number(),
-      name: t.String(),
-      category: t.Object({
-        id: t.Number(),
-        name: t.String(),
-      }),
-      nutrients: t.Object({
-        kcal: t.Nullable(t.Number()),
-        protein: t.Nullable(t.Number()),
-        lipids: t.Nullable(t.Number()),
-        carbohydrates: t.Nullable(t.Number()),
-      }),
-    }),
+    response: FoodWithDetails,
     detail: {
       tags: ["Foods"],
     },

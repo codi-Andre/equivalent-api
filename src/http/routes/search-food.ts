@@ -1,3 +1,4 @@
+import { Food } from "@/core/models/food"
 import { SearchFoodByCategoryId } from "@/core/services/search-food-by-category-id"
 import { repository } from "@/repositories/sqlite-repository"
 import Elysia, { t } from "elysia"
@@ -17,12 +18,7 @@ export const searchFood = new Elysia().get(
         error: "category must be a number",
       }),
     }),
-    response: t.Array(
-      t.Object({
-        id: t.Number(),
-        name: t.String(),
-      })
-    ),
+    response: t.Array(Food),
     detail: {
       tags: ["Foods"],
     },

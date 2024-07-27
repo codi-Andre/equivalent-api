@@ -1,3 +1,4 @@
+import { NutrientsWithQuantity } from "@/core/models/nutrients"
 import { CalculateFoodEquivalent } from "@/core/services/calc-food-equivalent"
 import { repository } from "@/repositories/sqlite-repository"
 import Elysia, { NotFoundError, t } from "elysia"
@@ -24,22 +25,12 @@ export const calcEquivalents = new Elysia().post(
       }),
       id1: t.Integer({
         error: "ids must be a integer",
-        minimum: 1,
       }),
       id2: t.Integer({
         error: "ids must be a integer",
-        minimum: 1,
       }),
     }),
-    response: t.Array(
-      t.Object({
-        quantity: t.Nullable(t.Number()),
-        kcal: t.Nullable(t.Number()),
-        protein: t.Nullable(t.Number()),
-        lipids: t.Nullable(t.Number()),
-        carbohydrates: t.Nullable(t.Number()),
-      })
-    ),
+    response: t.Array(NutrientsWithQuantity),
     detail: {
       tags: ["equivalents"],
     },
