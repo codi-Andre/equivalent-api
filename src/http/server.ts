@@ -5,6 +5,7 @@ import { getCategories } from "./routes/get-categories"
 import { getFoods } from "./routes/get-foods"
 import { getFoodDetails } from "./routes/get-food-details"
 import { searchFood } from "./routes/search-food"
+import { calcEquivalents } from "./routes/calc-equivalents"
 
 const app = new Elysia()
   .use(
@@ -19,7 +20,11 @@ const app = new Elysia()
           title: "Equivalent documentation",
           version: "0.0.1",
         },
-        tags: [{ name: "Categories" }, { name: "Foods" }],
+        tags: [
+          { name: "Categories" },
+          { name: "Foods" },
+          { name: "equivalents" },
+        ],
       },
     })
   )
@@ -36,7 +41,12 @@ const app = new Elysia()
     }
   })
   .group("/api/v1", (app) =>
-    app.use(getCategories).use(getFoods).use(getFoodDetails).use(searchFood)
+    app
+      .use(getCategories)
+      .use(getFoods)
+      .use(getFoodDetails)
+      .use(searchFood)
+      .use(calcEquivalents)
   )
   .listen(3000)
 
