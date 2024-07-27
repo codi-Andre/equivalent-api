@@ -1,13 +1,44 @@
 import { Category } from "@/core/models/category"
 import { Food, FoodWithCategory, FoodWithDetails } from "@/core/models/food"
+import { Nutrients } from "@/core/models/nutrients"
 import { CategoriesRepository } from "@/core/services/categories-repository"
 import { FoodsRepository } from "@/core/services/foods-repository"
+import { NutrientsRepository } from "@/core/services/nutrients-repository"
 import { eq } from "drizzle-orm"
 import { db, type SqliteDb } from "drizzle/db"
-import { categories, foods } from "drizzle/schema"
+import { categories, foods, nutrients } from "drizzle/schema"
 
-class Repository implements CategoriesRepository, FoodsRepository {
+class Repository
+  implements CategoriesRepository, FoodsRepository, NutrientsRepository
+{
   constructor(private readonly repo: SqliteDb) {}
+
+  async calcFoodEquivalent(
+    id1: number,
+    id2: number
+  ): Promise<Array<Nutrients | undefined>> {
+    const food1 = await this.repo.query.nutrients.findFirst({
+      columns: {
+        kcal: true,
+        protein: true,
+        lipids: true,
+        carbohydrates: true,
+      },
+      where: eq(nutrients.foodId, id1),
+    })
+
+    const food2 = await this.repo.query.nutrients.findFirst({
+      columns: {
+        kcal: true,
+        protein: true,
+        lipids: true,
+        carbohydrates: true,
+      },
+      where: eq(nutrients.foodId, id2),
+    })
+
+    return [food1, food2]
+  }
 
   async searchFoodByCategoryId(id: number): Promise<Food[]> {
     const foodList = await this.repo
