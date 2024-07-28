@@ -4,4 +4,5 @@ export interface FoodsRepository {
   getFoods(): Promise<FoodWithCategory[]>
   findFoodById(id: number): Promise<FoodWithDetails | undefined>
   searchFoodByCategoryId(id: number): Promise<Food[]>
+  searchFoodByName(name: string): Promise<Food[]>
 }

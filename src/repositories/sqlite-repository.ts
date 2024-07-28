@@ -4,7 +4,7 @@ import { Nutrients } from "@/core/models/nutrients"
 import { CategoriesRepository } from "@/core/services/categories-repository"
 import { FoodsRepository } from "@/core/services/foods-repository"
 import { NutrientsRepository } from "@/core/services/nutrients-repository"
-import { eq } from "drizzle-orm"
+import { eq, like } from "drizzle-orm"
 import { db, type SqliteDb } from "drizzle/db"
 import { categories, foods, nutrients } from "drizzle/schema"
 
@@ -12,6 +12,16 @@ class Repository
   implements CategoriesRepository, FoodsRepository, NutrientsRepository
 {
   constructor(private readonly repo: SqliteDb) {}
+
+  async searchFoodByName(name: string): Promise<Food[]> {
+    const foodList = await this.repo
+      .select({ id: foods.id, name: foods.name })
+      .from(foods)
+      .where(like(foods.name, `%${name}%`))
+    console.log(name)
+
+    return foodList
+  }
 
   async calcFoodEquivalent(
     id1: number,
