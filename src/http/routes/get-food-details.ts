@@ -17,8 +17,8 @@ export const getFoodDetails = new Elysia().get(
   },
   {
     params: t.Object({
-      id: t.Number({
-        error: "Id must be a number",
+      id: t.Integer({
+        error: "Id must be a Integer",
       }),
     }),
     response: FoodWithDetails,
