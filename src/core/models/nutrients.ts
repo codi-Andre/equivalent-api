@@ -2,7 +2,6 @@ import { Static, t } from "elysia"
 
 export const Nutrients = t.Intersect([
   t.Object({
-    key: t.String(),
     kcal: t.Number(),
     protein: t.Number(),
     lipids: t.Number(),
